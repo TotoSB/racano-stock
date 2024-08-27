@@ -1,83 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
+<html lang="es">
+<head>
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Página Principal</title>
-    <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+    {% include 'layouts/head_atts.html' %}
+    <title>Apple</title>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <h1 class="logo">MiSitio</h1>
-            <nav>
-                <ul>
-                    <li><a href="#home">Inicio</a></li>
-                    <li><a href="#about">Sobre Nosotros</a></li>
-                    <li><a href="#services">Servicios</a></li>
-                    <li><a href="#contact">Contacto</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h2>Bienvenido a MiSitio</h2>
-            <p>Ofrecemos soluciones innovadoras para tus necesidades.</p>
-            <a href="#contact" class="cta-button">Contáctanos</a>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2>Sobre Nosotros</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <h2>Nuestros Servicios</h2>
-            <div class="service">
-                <h3>Servicio 1</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    {% include 'layouts/header.html' %}
+    <main>
+        <section id="evento">
+            <a href="">
+                <h2>Evento de Apple</h2>
+                <span>Miralo el 9 de septiembre a las 10 a.m. (PT).</span>
+                <button>Mas Informacion</button>
+            </a>
+        </section>
+        <section id="iphone">
+            <a href="">
+                <h2>iPhone</h2>
+                <span>Nuestras cámaras más poderosas hasta ahora</span>
+                <span>Chips ultrarrapidos. Y USB-C</span>
+                <button>Mas Informacion</button>
+            </a>
+        </section>
+        <section id="macbook">
+            <a href="">
+                <h2>MacBook Air</h2>
+                <span>Superligera. Superchip M3.</span>
+                <button>Mas Informacion</button>
+            </a>
+        </section>
+        <section id="grid-gallery">
+            <div>
+                <a href="">
+                    <h4>Apple Intelligence</h4>
+                    <span>Una IA para todos.</span>
+                    <p>Disponible proximamente este año en version beta en ingles de Estados Unidos</p>
+                    <button>Mas Informacion</button>
+                </a>
             </div>
-            <div class="service">
-                <h3>Servicio 2</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <div>
+                <a href="">
+                    <h4>Apple Intelligence</h4>
+                    <span>Increiblemente poderoso</span>
+                    <span>Asombrosamente delgado</span>
+                    <button>Mas Informacion</button>
+                </a>
             </div>
-            <div class="service">
-                <h3>Servicio 3</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <div>
+                <a href="">
+                    <h4>Watch</h4>
+                    <span>Mas poder para brillas mas</span>
+                    <button>Mas Informacion</button>
+                </a>
             </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Contacto</h2>
-            <p>¿Tienes alguna pregunta? No dudes en contactarnos.</p>
-            <form>
-                <input type="text" placeholder="Nombre" required>
-                <input type="email" placeholder="Correo Electrónico" required>
-                <textarea placeholder="Mensaje" required></textarea>
-                <button type="submit">Enviar</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 MiSitio. Todos los derechos reservados.</p>
-        </div>
-    </footer>
+            <div>
+                <a href="">
+                    <h4>MacBook Pro</h4>
+                    <span>Te roba las miradas. Se roba las miradas</span>
+                    <button>Mas Informacion</button>
+                </a>
+            </div>
+        </section>
+    </main>
+    {% include 'layouts/footer.html' %}
 </body>
 </html>

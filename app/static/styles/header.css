@@ -1,0 +1,14 @@
+* {
+    font-family: Helvetica, sans-serif;
+}
+
+#logo-header {
+    width: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    align-items: center;
+}
