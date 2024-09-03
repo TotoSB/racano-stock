@@ -12,19 +12,20 @@
     {% include 'layouts/header.html' %}
     <main>
         <section id="evento">
-            <a href="">
-                <h2>Evento de Apple</h2>
-                <span>Miralo el 9 de septiembre a las 10 a.m. (PT).</span>
-                <button>Mas Informacion</button>
-            </a>
+            <div class="cont-text">
+                <h2>iPhone</h2>
+                <p>Diseñado para conquistarte.</p>
+            </div>
+            <div class="cont-video">
+                <video loop autoplay muted id="myVideo" src="{% static 'videos/hero.mp4' %}"></video>
+                <button class="pause" onclick="Pause()"><i class="fa-solid fa-pause" id="butoncito"></i></button>
+            </div>
         </section>
         <section id="iphone">
-            <a href="">
+            <div class="iphone-buy-text">
                 <h2>iPhone</h2>
-                <span>Nuestras cámaras más poderosas hasta ahora</span>
-                <span>Chips ultrarrapidos. Y USB-C</span>
-                <button>Mas Informacion</button>
-            </a>
+                <p>Diseñado para conquistarte.</p>
+            </div>
         </section>
         <section id="macbook">
             <a href="">
@@ -66,6 +67,7 @@
             </div>
         </section>
     </main>
+    <script src="{% static 'js/index.js' %}"></script>
     {% include 'layouts/footer.html' %}
 </body>
 </html>
