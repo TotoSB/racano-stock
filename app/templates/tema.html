@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include 'layouts/head_atts.html' %}
+    <title>Document</title>
+</head>
+<body>
+    {% include 'layouts/header.html' %}
+    <h1>{{categoria.nombre}}</h1>
+    {% for inf in infom %}
+    <div class="item">
+        <img alt="{{inf.nombre}}" src="/media/{{inf.foto}}">
+        <h4>{{inf.nombre}}</h4>
+        <p>En stock:</p>
+        <a href="#">Editar</a>
+    </div>
+    {% endfor %}
+</body>
+</html>

@@ -1,17 +1,10 @@
 {% load static %}
 <header>
     <nav>
-        <a href=""><img id="logo-header" src="{% static 'imgs/logo.png' %}" alt=""></a>
-        {% comment %} <a href="">Mac</a>
-        <a href="">iPad</a>
-        <a href="">iPhone</a>
-        <a href="">Watch</a>
-        <a href="">AirPods</a>
-        <a href="">Tv y Casa</a> {% endcomment %}
+        <a href="{% url 'index' %}"><img id="logo-header" src="{% static 'imgs/logo.png' %}" alt=""></a>
         {% for categoria in categorias %}
-            <a href="">{{categoria.nombre}}</a>
+            <a href="{% url 'temas' categoria.nombre %}">{{categoria.nombre}}</a>
         {% endfor %}
-        <a href="">Entretenimiento</a>
         <a href="">Soporte</a>
         <a href="">Dónde comprar</a>
         <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>

@@ -6,4 +6,5 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('<str:tema>/', views.temas, name='temas'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

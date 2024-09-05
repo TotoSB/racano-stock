@@ -37,3 +37,13 @@ header a {
     font-size: 12px;
     margin-right: 15px;
 }
+
+footer {
+    background-color: rgb(219 219 219);
+    text-align: left;
+    padding: 40px;
+}
+
+footer p {
+    margin-bottom: 20px;
+}

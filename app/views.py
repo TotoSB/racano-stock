@@ -31,3 +31,13 @@ def index(request):
         "pods": pod,
     })
     return render(request, 'index.html', context)
+
+def temas(request, tema):
+    context = get_global_data()
+    categoria = Categorias.objects.get(nombre=tema)
+    info = Producto.objects.filter(categoria=categoria)
+    context.update({
+        "categoria": categoria,
+        "infom": info,
+    })
+    return render(request, 'tema.html', context)
