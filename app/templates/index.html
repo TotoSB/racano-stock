@@ -21,49 +21,100 @@
                 <button class="pause" onclick="Pause()"><i class="fa-solid fa-pause" id="butoncito"></i></button>
             </div>
         </section>
-        <section id="iphone">
-            <div class="iphone-buy-text">
+        <section class="sections-child">
+            <div class="apple-buy-text">
                 <h2>iPhone</h2>
                 <p>Diseñado para conquistarte.</p>
+                <div class="cont-apple">
+                {% for iphone in iphones %}
+                    <div class="item">
+                        <img alt="{{iphone.nombre}}" src="/media/{{iphone.foto}}">
+                        <h4>{{iphone.nombre}}</h4>
+                        <p>En stock:</p>
+                        <a href="#">Editar</a>
+                    </div>
+                {% endfor %}
+                </div>
             </div>
         </section>
-        <section id="macbook">
-            <a href="">
-                <h2>MacBook Air</h2>
-                <span>Superligera. Superchip M3.</span>
-                <button>Mas Informacion</button>
-            </a>
+        <section class="sections-child">
+            <div class="apple-buy-text">
+                <h2>Mac</h2>
+                <p>Sueña en grande, la Mac puede hacerlo.</p>
+                <div class="cont-apple">
+                {% for mac in macs %}
+                    <div class="item">
+                        <img alt="{{mac.nombre}}" src="/media/{{mac.foto}}">
+                        <h4>{{mac.nombre}}</h4>
+                        <p>En stock:</p>
+                        <a href="#">Editar</a>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
         </section>
-        <section id="grid-gallery">
-            <div>
-                <a href="">
-                    <h4>Apple Intelligence</h4>
-                    <span>Una IA para todos.</span>
-                    <p>Disponible proximamente este año en version beta en ingles de Estados Unidos</p>
-                    <button>Mas Informacion</button>
-                </a>
+        <section class="sections-child">
+            <div class="apple-buy-text">
+                <h2>Watch</h2>
+                <p>Tenerlo es quererlo.</p>
+                <div class="cont-apple">
+                {% for watch in watchs %}
+                    <div class="item">
+                        <img alt="{{watch.nombre}}" src="/media/{{watch.foto}}">
+                        <h4>{{watch.nombre}}</h4>
+                        <p>En stock:</p>
+                        <a href="#">Editar</a>
+                    </div>
+                {% endfor %}
+                </div>
             </div>
-            <div>
-                <a href="">
-                    <h4>Apple Intelligence</h4>
-                    <span>Increiblemente poderoso</span>
-                    <span>Asombrosamente delgado</span>
-                    <button>Mas Informacion</button>
-                </a>
+        </section>
+        <section class="sections-child">
+            <div class="apple-buy-text">
+                <h2>Pad</h2>
+                <p>Una invitación a tocar, dibujar, escribir y crear.</p>
+                <div class="cont-apple">
+                {% for pad in pads %}
+                    <div class="item">
+                        <img alt="{{pad.nombre}}" src="/media/{{pad.foto}}">
+                        <h4>{{pad.nombre}}</h4>
+                        <p>En stock:</p>
+                        <a href="#">Editar</a>
+                    </div>
+                {% endfor %}
+                </div>
             </div>
-            <div>
-                <a href="">
-                    <h4>Watch</h4>
-                    <span>Mas poder para brillas mas</span>
-                    <button>Mas Informacion</button>
-                </a>
+        </section>
+        <section class="sections-child">
+            <div class="apple-buy-text">
+                <h2>AirPods</h2>
+                <p>Ábrele la puerta de tu casa al futuro.</p>
+                <div class="cont-apple">
+                {% for pod in pods %}
+                    <div class="item">
+                        <img alt="{{pod.nombre}}" src="/media/{{pod.foto}}">
+                        <h4>{{pod.nombre}}</h4>
+                        <p>En stock:</p>
+                        <a href="#">Editar</a>
+                    </div>
+                {% endfor %}
+                </div>
             </div>
-            <div>
-                <a href="">
-                    <h4>MacBook Pro</h4>
-                    <span>Te roba las miradas. Se roba las miradas</span>
-                    <button>Mas Informacion</button>
-                </a>
+        </section>
+        <section class="sections-child">
+            <div class="apple-buy-text">
+                <h2>Tv y Casa</h2>
+                <p>Ábrele la puerta de tu casa al futuro.</p>
+                <div class="cont-apple">
+                {% for tyc in tycs %}
+                    <div class="item">
+                        <img alt="{{tyc.nombre}}" src="/media/{{tyc.foto}}">
+                        <h4>{{tyc.nombre}}</h4>
+                        <p>En stock:</p>
+                        <a href="#">Editar</a>
+                    </div>
+                {% endfor %}
+                </div>
             </div>
         </section>
     </main>

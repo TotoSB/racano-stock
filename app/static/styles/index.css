@@ -72,8 +72,48 @@ main {
     padding: 10px;
 }
 
-/* Iphone compra */
-
-#iphone {
+.sections-child:first-child {
+    margin-top: 0px;
+}
+.sections-child {
     width: 90vw;
+    margin-top: 20px;
+}
+
+.item {
+    padding: 0px 50px 0px;
+}
+
+.item img {
+    max-width: 200px;
+    max-height: 160px;
+    object-fit: cover;
+}
+
+.cont-apple {
+    display: flex;
+    padding-bottom: 20px;
+    flex-direction: row;
+    justify-content: flex-start;
+    overflow-x: scroll;
+    text-align: center;
+}
+
+.apple-buy-text p {
+    margin-bottom: 20px;
+}
+
+.cont-apple h4 {
+    padding: 15px;
+    font-size: 22px;
+    text-align: center;
+}
+
+.item a {
+    background-color: var(--blue-default);
+    padding: 10px;
+    border: 0px solid transparent;
+    color: #fff;
+    border-radius: 30px;
+    text-decoration: none;
 }

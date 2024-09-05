@@ -1,3 +1,7 @@
+:root {
+    --blue-default :rgb(0, 113, 227);
+}
+
 body {
     margin: 0px;
 }
