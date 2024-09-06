@@ -1,0 +1,15 @@
+main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+main section {
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.item {
+    
+}
