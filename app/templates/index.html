@@ -28,10 +28,11 @@
                 <div class="cont-apple">
                 {% for iphone in iphones %}
                     <div class="item">
-                        <img alt="{{iphone.nombre}}" src="/media/{{iphone.foto}}">
-                        <h4>{{iphone.nombre}}</h4>
-                        <p>En stock: {{iphone.stock}}</p>
-                        <a href="#">Editar</a>
+                        <a href="{% url 'producto' iphone.categoria.nombre iphone.id %}" class="link-prod">
+                            <img alt="{{iphone.nombre}}" src="/media/{{iphone.foto}}">
+                            <h4>{{iphone.nombre}}</h4>
+                            <p>En stock: {{iphone.stock}}</p>
+                        </a>
                     </div>
                 {% endfor %}
                 </div>
@@ -43,12 +44,13 @@
                 <p>Sueña en grande, la Mac puede hacerlo.</p>
                 <div class="cont-apple">
                 {% for mac in macs %}
-                    <div class="item">
+                <div class="item">
+                    <a href="{% url 'producto' mac.categoria.nombre mac.id %}" class="link-prod">
                         <img alt="{{mac.nombre}}" src="/media/{{mac.foto}}">
                         <h4>{{mac.nombre}}</h4>
                         <p>En stock: {{mac.stock}}</p>
-                        <a href="#">Editar</a>
-                    </div>
+                    </a>
+                </div>
                 {% endfor %}
                 </div>
             </div>
@@ -60,10 +62,11 @@
                 <div class="cont-apple">
                 {% for watch in watchs %}
                     <div class="item">
-                        <img alt="{{watch.nombre}}" src="/media/{{watch.foto}}">
-                        <h4>{{watch.nombre}}</h4>
-                        <p>En stock: {{watch.stock}}</p>
-                        <a href="#">Editar</a>
+                        <a href="{% url 'producto' watch.categoria.nombre watch.id %}" class="link-prod">
+                            <img alt="{{watch.nombre}}" src="/media/{{watch.foto}}">
+                            <h4>{{watch.nombre}}</h4>
+                            <p>En stock: {{watch.stock}}</p>
+                        </a>
                     </div>
                 {% endfor %}
                 </div>
@@ -75,12 +78,13 @@
                 <p>Una invitación a tocar, dibujar, escribir y crear.</p>
                 <div class="cont-apple">
                 {% for pad in pads %}
-                    <div class="item">
+                <div class="item">
+                    <a href="{% url 'producto' pad.categoria.nombre pad.id %}" class="link-prod">
                         <img alt="{{pad.nombre}}" src="/media/{{pad.foto}}">
                         <h4>{{pad.nombre}}</h4>
                         <p>En stock: {{pad.stock}}</p>
-                        <a href="#">Editar</a>
-                    </div>
+                    </a>
+                </div>
                 {% endfor %}
                 </div>
             </div>
@@ -91,12 +95,13 @@
                 <p>Ábrele la puerta de tu casa al futuro.</p>
                 <div class="cont-apple">
                 {% for pod in pods %}
-                    <div class="item">
+                <div class="item">
+                    <a href="{% url 'producto' pod.categoria.nombre pod.id %}" class="link-prod">
                         <img alt="{{pod.nombre}}" src="/media/{{pod.foto}}">
                         <h4>{{pod.nombre}}</h4>
                         <p>En stock: {{pod.stock}}</p>
-                        <a href="#">Editar</a>
-                    </div>
+                    </a>
+                </div>
                 {% endfor %}
                 </div>
             </div>
@@ -107,12 +112,13 @@
                 <p>Ábrele la puerta de tu casa al futuro.</p>
                 <div class="cont-apple">
                 {% for tyc in tycs %}
-                    <div class="item">
+                <div class="item">
+                    <a href="{% url 'producto' tyc.categoria.nombre tyc.id %}" class="link-prod">
                         <img alt="{{tyc.nombre}}" src="/media/{{tyc.foto}}">
                         <h4>{{tyc.nombre}}</h4>
                         <p>En stock: {{tyc.stock}}</p>
-                        <a href="#">Editar</a>
-                    </div>
+                    </a>
+                </div>
                 {% endfor %}
                 </div>
             </div>

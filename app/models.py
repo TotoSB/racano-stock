@@ -28,15 +28,14 @@ class Producto(models.Model):
 class Producto_modelo(models.Model):
     id = models.AutoField(primary_key=True)
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
-    nombre = models.TextField(max_length=100)
-    descripcion = models.TextField()
-    color = ColorField(default='#FF0000')
+    nombre_variante = models.CharField(max_length=100)
+    color = ColorField(default='#FF0000', blank=True)
     precio_proveedor = models.IntegerField(default=0)
     precio_unidad = models.IntegerField(default=0)
     stock = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.nombre
+        return self.nombre_variante
 
 
 class Ventas(models.Model):

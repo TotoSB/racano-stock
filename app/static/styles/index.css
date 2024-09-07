@@ -108,12 +108,17 @@ main {
     text-align: center;
 }
 
-.item a {
+.edit-btn {
     background-color: var(--blue-default);
     padding: 10px;
     border: 0px solid transparent;
     color: #fff;
     border-radius: 30px;
+    text-decoration: none;
+}
+
+.link-prod {
+    color: #000;
     text-decoration: none;
 }
 

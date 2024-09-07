@@ -7,5 +7,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', views.index, name='index'),
     path('<str:tema>/<int:id_prod>/', views.producto, name='producto'),
+    path('<str:tema>/<int:id_prod>/<int:id_variante>/', views.variante, name='variante'),
     path('<str:tema>/', views.temas, name='temas'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

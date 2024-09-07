@@ -51,3 +51,15 @@ def producto(request, tema, id_prod):
         "variantes": variantes
     })
     return render(request, 'producto.html', context)
+
+def variante(request, tema, id_prod, id_variante):
+    context = get_global_data()
+    prod_select = Producto_modelo.objects.get(id=id_variante)
+    prod = Producto.objects.get(id=id_prod)
+    variantes = Producto_modelo.objects.filter(producto=prod)
+    context.update({
+        "producto": prod,
+        "variantes": variantes,
+        "variante_selec": prod_select
+    })
+    return render(request, 'subproducto.html', context)

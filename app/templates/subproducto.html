@@ -17,9 +17,9 @@
             </div>
             <div class="info">
                 <a href="{% url 'temas' producto.categoria.nombre %}"><b> < {{producto.categoria}}</b></a>
-                <h1>{{producto.nombre}} (General)</h1>
+                <h1>{{variante_selec.nombre_variante}}</h1>
                 <p>{{producto.descripcion}}</p>
-                <b>Stock general: {{producto.stock}}</b>
+                <b>Stock: {{producto.stock}}</b>
                 <b>Variantes:</b>
                 <div class="cont-variantes">
                 {% for variante in variantes %}
