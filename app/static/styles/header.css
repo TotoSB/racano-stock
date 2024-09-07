@@ -4,6 +4,10 @@
 
 body {
     margin: 0px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
 * {
@@ -14,19 +18,73 @@ body {
     width: 20px;
 }
 
+.phone-nav {
+    display: none;
+}
+
+#hide-menu {
+    width: 100vw;
+    background-color: #fafafa;
+    height: 100vh;
+    margin-left: 100vh;
+    position: absolute;
+    z-index: 2000;
+    transition: all 0.5s;
+    padding-left: 20px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.cont-link-menu {
+    height: 90%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+#hide-btn {
+    background-color: transparent;
+    border: 0px;
+    cursor: pointer;
+    width: 45px;
+    height: 45px;
+}
+
+#hide-btn i {
+    font-size: 40px;
+    transition: color 0.3s;
+}
+
+#hide-btn i:hover {
+    color: #929292;
+}
+
+#hide-menu a {
+    color: #000;
+    font-size: 40px;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+#hide-menu a:hover {
+    color: #ccc;
+}
+
 header {
+    background-color: rgb(241, 241, 241);
     display: flex;
     justify-content: center;
     height: 50px;
     align-items: center;
-    background-color: rgb(241, 241, 241);
     width: 100%;
 }
 
-header nav {
+.pc-nav {
     display: flex;
     align-items: center;
-    width: 100%;
+    /* width: 100%; */
     justify-content: center;
 }
 
@@ -42,8 +100,49 @@ footer {
     background-color: rgb(219 219 219);
     text-align: left;
     padding: 40px;
+    margin-top: auto;
 }
 
 footer p {
     margin-bottom: 20px;
+}
+
+@media(max-width:650px) {
+
+    #hide-menu {
+        display: flex;
+    }
+
+    header {
+        justify-content: space-between;
+        padding: 10px;
+    }
+
+    header a {
+        margin: 0px;
+    }
+
+    .pc-nav {
+        display: none;
+    }
+
+    .phone-nav {
+        display: block;
+        margin-right: 10px;
+    }
+
+    .phone-nav button {
+        background-color: transparent;
+        border: 0px solid transparent;
+        cursor: pointer;
+    }
+
+    .phone-nav button i {
+        font-size: 20px;
+    }
+
+    footer {
+        padding: 10px;
+        font-size: 12px;
+    }
 }

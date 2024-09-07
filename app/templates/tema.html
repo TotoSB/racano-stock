@@ -11,17 +11,22 @@
 <body>
     {% include 'layouts/header.html' %}
     <main>
-        <h1>{{categoria.nombre}}</h1>
         <section>
-            {% for inf in infom %}
-            <article class="item">
-                <img alt="{{inf.nombre}}" src="/media/{{inf.foto}}">
-                <h4>{{inf.nombre}}</h4>
-                <p>En stock:</p>
-                <a href="#">Editar</a>
-            </article>
-            {% endfor %}
+            <h1>{{categoria.nombre}}</h1>
+            <div class="cont-items">
+                {% for inf in infom %}
+                    <article class="item">
+                        <a href="{% url 'producto' categoria.nombre inf.id %}">
+                            <img alt="{{inf.nombre}}" src="/media/{{inf.foto}}">
+                            <h4>{{inf.nombre}}</h4>
+                            <p>En stock: {{inf.stock}} </p>
+                        </a>
+                        <a href="#" class="btn">Borrar</a>
+                    </article>
+                {% endfor %}
+            </div>
         </section>
     </main>
+    {% include 'layouts/footer.html' %}
 </body>
 </html>

@@ -116,3 +116,14 @@ main {
     border-radius: 30px;
     text-decoration: none;
 }
+
+@media(max-width:650px) {
+    .cont-text {
+        flex-direction: column;
+    }
+
+    .sections-child {
+        width: 100%;
+        margin-left: 20px;
+    }
+}

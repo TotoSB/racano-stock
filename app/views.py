@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Categorias, Producto
+from .models import Categorias, Producto, Producto_modelo
 
 
 def get_global_data():
@@ -41,3 +41,13 @@ def temas(request, tema):
         "infom": info,
     })
     return render(request, 'tema.html', context)
+
+def producto(request, tema, id_prod):
+    context = get_global_data()
+    prod = Producto.objects.get(id=id_prod)
+    variantes = Producto_modelo.objects.filter(producto=prod)
+    context.update({
+        "producto": prod,
+        "variantes": variantes
+    })
+    return render(request, 'producto.html', context)

@@ -1,13 +1,25 @@
 {% load static %}
 <header>
-    <nav>
-        <a href="{% url 'index' %}"><img id="logo-header" src="{% static 'imgs/logo.png' %}" alt=""></a>
+    <a href="{% url 'index' %}"><img id="logo-header" src="{% static 'imgs/logo.png' %}" alt=""></a>
+    <nav class="pc-nav">
         {% for categoria in categorias %}
             <a href="{% url 'temas' categoria.nombre %}">{{categoria.nombre}}</a>
         {% endfor %}
         <a href="">Soporte</a>
         <a href="">Dónde comprar</a>
         <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
-        <a href=""><i class="fa-solid fa-bag-shopping"></i></a>
+    </nav>
+    <nav class="phone-nav">
+        <button onclick="showMenu()">
+            <i class="fa-solid fa-bars"></i>
+        </button>
     </nav>
 </header>
+<div id="hide-menu">
+    <div class="cont-link-menu">
+        <button id="hide-btn" onclick="hideMenu()"><i class="fa-solid fa-xmark"></i></button>
+        {% for categoria in categorias %}
+            <a href="{% url 'temas' categoria.nombre %}">{{categoria.nombre}}</a>
+        {% endfor %}
+    </div>
+</div>

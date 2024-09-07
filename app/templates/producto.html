@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/productos.css' %}">
+    {% include 'layouts/head_atts.html' %}
+    <title>Apple - {{producto.nombre}}</title>
+</head>
+<body>
+    {% include 'layouts/header.html' %}
+    <main>
+        <article>
+            <div class="image">
+                <img src="/media/{{producto.foto}}">
+            </div>
+            <div class="info">
+                <b>> {{producto.categoria}}</b>
+                <h1>{{producto.nombre}}</h1>
+                <p>{{producto.descripcion}}</p>
+                <span>Stock: {{producto.stock}}</span>
+                {% for variante in variantes %}
+                    <p>{{variante.nombre}}</p>
+                    <div class="color-circle" style="background-color: {{variante.color}};">
+                    </div>
+                {% empty %}
+                <p>Producto sin variante</p>
+                {% endfor %}
+                <a href="">Editar</a>
+            </div>
+        </article>
+    </main>
+    {% include 'layouts/footer.html' %}
+</body>
+</html>

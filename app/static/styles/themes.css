@@ -4,12 +4,36 @@ main {
     justify-content: center;
 }
 
+h1 {
+    font-size: 40px;
+}
+
 main section {
     width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.cont-items {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 20px;
 }
 
 .item {
-    
+    border-radius: 30px;
+    padding: 8px;
+    text-align: center;
+}
+
+.item a {
+    text-decoration: none;
+    color: #000;
+}
+
+.btn {
+    background-color: #ccc;
+    padding: 10px;
+    border-radius: 20px;
+    color: #000;
 }
