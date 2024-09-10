@@ -1,0 +1,43 @@
+main {
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    margin-top: 20px;
+    width: 80%;
+}
+
+form div {
+    margin-bottom: 20px;
+}
+#id_image {
+    border: 0px solid transparent !important;
+}
+
+form div input {
+    padding: 8px;
+    border-radius: 20px;
+    border: 1px solid #000;
+}
+
+form div input:focus {
+    border: 1px solid var(--blue-default);
+}
+
+#submit {
+    background-color: var(--blue-default);
+    padding: 10px;
+    color: #fff;
+    border-radius: 20px;
+    border: 0px solid transparent;
+    cursor: pointer;
+}
+
+textarea {
+    margin-top: 5px;
+    field-sizing: content;
+    resize: none;
+    padding: 9px;
+    border-radius: 20px;
+}

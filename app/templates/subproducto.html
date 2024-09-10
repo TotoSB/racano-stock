@@ -13,22 +13,34 @@
     <main>
         <article>
             <div class="image">
-                <img src="/media/{{producto.foto}}">
+                <img src="/media/{{variante_selec.image}}">
             </div>
             <div class="info">
                 <a href="{% url 'temas' producto.categoria.nombre %}"><b> < {{producto.categoria}}</b></a>
                 <h1>{{variante_selec.nombre_variante}}</h1>
-                <p>{{producto.descripcion}}</p>
-                <b>Stock: {{producto.stock}}</b>
+                {% if variante_selec.stock <= 0 %}
+                    <b class="no-avaible">Sin stock</b>
+                {% else %}
+                    <b class="avaible">Stock del modelo: {{variante_selec.stock}}</b>
+                {% endif %}
+                <b>Descripcion:</b>
+                <p>{{variante_selec.descripcion}}</p>
                 <b>Variantes:</b>
                 <div class="cont-variantes">
                 {% for variante in variantes %}
-                    <a href="{% url 'variante' producto.categoria.nombre producto.id variante.id %}" class="variante_link">{{variante.nombre_variante}}</a>
+                    {% if variante.nombre_variante == variante_selec.nombre_variante %}
+                        <a href="{% url 'producto' producto.categoria.nombre producto.id %}" id="select" class="variante_link">{{variante.nombre_variante}}</a>
+                    {% else %}
+                        <a href="{% url 'variante' producto.categoria.nombre producto.id variante.id %}" class="variante_link">{{variante.nombre_variante}}</a>
+                    {% endif %}
                 {% empty %}
                 <p>Producto sin variante</p>
                 {% endfor %}
                 </div>
-                <a href="">Editar</a>
+                <div class="cont-btns">
+                    <a href="{% url 'editar_var' variante_selec.id %}" class="btn-edit">Editar</a>
+                    <a href="" class="btn-edit">Eliminar variante</a>
+                </div>
             </div>
         </article>
     </main>

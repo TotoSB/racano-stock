@@ -1,5 +1,4 @@
 from django.db import models
-from colorfield.fields import ColorField
 from django.core.files.base import ContentFile
 from PIL import Image
 import io
@@ -29,7 +28,8 @@ class Producto_modelo(models.Model):
     id = models.AutoField(primary_key=True)
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     nombre_variante = models.CharField(max_length=100)
-    color = ColorField(default='#FF0000', blank=True)
+    descripcion = models.TextField()
+    image = models.ImageField(upload_to="subprod", null=True)
     precio_proveedor = models.IntegerField(default=0)
     precio_unidad = models.IntegerField(default=0)
     stock = models.IntegerField(default=0)
@@ -41,3 +41,5 @@ class Producto_modelo(models.Model):
 class Ventas(models.Model):
     id = models.AutoField(primary_key=True)
     valor_venta = models.IntegerField(default=0)
+    productos = models.ManyToManyField(Producto_modelo)
+    cerrada = models.BooleanField(default=False)

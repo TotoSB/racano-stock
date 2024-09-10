@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Categorias, Producto, Producto_modelo
-
+from .forms import ModeloForm
 
 def get_global_data():
     categorias = Categorias.objects.all()
@@ -63,3 +63,22 @@ def variante(request, tema, id_prod, id_variante):
         "variante_selec": prod_select
     })
     return render(request, 'subproducto.html', context)
+
+def editar_producto_variante(request, id_modelo):
+    context = get_global_data()
+    prod_select = Producto_modelo.objects.get(id=id_modelo)
+
+    if request.method == 'POST':
+        form = ModeloForm(request.POST, request.FILES, instance=prod_select)
+        if form.is_valid():
+            form.save()
+            return redirect('index')  # Redirige a la vista que prefieras después de guardar
+    else:
+        form = ModeloForm(instance=prod_select)
+
+    context.update({
+        "modelo": prod_select,
+        "form": form
+    })
+
+    return render(request, 'edit_prod.html', context)

@@ -18,8 +18,13 @@
             <div class="info">
                 <a href="{% url 'temas' producto.categoria.nombre %}"><b> < {{producto.categoria}}</b></a>
                 <h1>{{producto.nombre}} (General)</h1>
+                {% if producto.stock <= 0 %}
+                    <b class="no-avaible">Sin stock general</b>
+                {% else %}
+                    <b class="avaible">Stock general: {{producto.stock}}</b>
+                {% endif %}
+                <b>Descripcion:</b>
                 <p>{{producto.descripcion}}</p>
-                <b>Stock general: {{producto.stock}}</b>
                 <b>Variantes:</b>
                 <div class="cont-variantes">
                 {% for variante in variantes %}
@@ -28,7 +33,10 @@
                 <p>Producto sin variante</p>
                 {% endfor %}
                 </div>
-                <a href="">Editar</a>
+                <div class="cont-btns">
+                    <a href="" class="btn-edit">Editar</a>
+                    <a href="" class="btn-edit">Eliminar todos</a>
+                </div>
             </div>
         </article>
     </main>
