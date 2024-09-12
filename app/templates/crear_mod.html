@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    {% include 'layouts/head_atts.html' %}
+    <link rel="stylesheet" href="{% static 'styles/crear_var.css' %}">
+    <title>Crear modelo</title>
+</head>
+<body>
+    {% include 'layouts/header.html' %}
+    <main>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form}}
+            <button id="submit" type="submit">Crear</button>
+        </form>
+    </main>
+    {% include 'layouts/footer.html' %}
+</body>
+</html>

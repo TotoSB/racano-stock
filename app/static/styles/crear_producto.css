@@ -1,0 +1,61 @@
+body {
+    justify-content: space-between !important;
+}
+
+footer {
+    margin-top: 0px;
+}
+
+main {
+    width: 90vw;
+    display: flex;
+    justify-content: center;
+    margin-left: 50px;
+    flex-direction: column;
+}
+
+main form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+main form div {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+main form input {
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    margin-left: 5px;
+}
+
+form select {
+    border-radius: 20px;
+}
+
+textarea {
+    margin-top: 5px;
+    field-sizing: content;
+    resize: none;
+    padding: 9px;
+    border-radius: 20px;
+    min-width: 200px;
+    max-width: 50%;
+}
+
+#id_image {
+    border: 0px solid transparent !important;
+}
+
+#submit {
+    background-color: var(--blue-default);
+    padding: 10px;
+    color: #fff;
+    border-radius: 20px;
+    border: 0px solid transparent;
+    cursor: pointer;
+}

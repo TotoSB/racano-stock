@@ -32,10 +32,11 @@
                 {% empty %}
                 <p>Producto sin variante</p>
                 {% endfor %}
+                <a href="{% url 'crear_mod' producto.id %}"><i class="fa-solid fa-plus"></i></a>
                 </div>
                 <div class="cont-btns">
-                    <a href="" class="btn-edit">Editar</a>
-                    <a href="" class="btn-edit">Eliminar todos</a>
+                    <a href="{% url 'editar_producto' producto.id %}" class="btn-edit">Editar producto</a>
+                    <a href="{% url 'eliminar_producto' producto.id %}" onclick="return confirm('¿Estás seguro de que deseas eliminar este producto?');" class="btn-edit">Eliminar producto</a>
                 </div>
             </div>
         </article>

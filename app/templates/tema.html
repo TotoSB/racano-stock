@@ -13,6 +13,7 @@
     <main>
         <section>
             <h1>{{categoria.nombre}}</h1>
+            <a href="{% url 'crear_prod' categoria.id %}">Crear</a>
             <div class="cont-items">
                 {% for inf in infom %}
                     <article class="item">
@@ -21,7 +22,6 @@
                             <h4>{{inf.nombre}}</h4>
                             <p>En stock: {{inf.stock}} </p>
                         </a>
-                        <a href="#" class="btn">Borrar</a>
                     </article>
                 {% endfor %}
             </div>

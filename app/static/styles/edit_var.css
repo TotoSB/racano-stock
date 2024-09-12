@@ -11,9 +11,6 @@ form {
 form div {
     margin-bottom: 20px;
 }
-#id_image {
-    border: 0px solid transparent !important;
-}
 
 form div input {
     padding: 8px;
@@ -40,4 +37,5 @@ textarea {
     resize: none;
     padding: 9px;
     border-radius: 20px;
+    min-width: 200px;
 }

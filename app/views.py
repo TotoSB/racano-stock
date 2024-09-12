@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Categorias, Producto, Producto_modelo
-from .forms import ModeloForm
+from .forms import EditModeloForm, CreateModeloForm, EditarProductoForm
 
 def get_global_data():
     categorias = Categorias.objects.all()
@@ -67,18 +67,91 @@ def variante(request, tema, id_prod, id_variante):
 def editar_producto_variante(request, id_modelo):
     context = get_global_data()
     prod_select = Producto_modelo.objects.get(id=id_modelo)
+    prod_original = Producto.objects.get(id=prod_select.producto.id)
+    stock_anterior = prod_select.stock
 
     if request.method == 'POST':
-        form = ModeloForm(request.POST, request.FILES, instance=prod_select)
+        form = EditModeloForm(request.POST, request.FILES, instance=prod_select)
+        
         if form.is_valid():
+            prod_original.stock -= stock_anterior
+
+            nuevo_stock = int(request.POST.get('stock'))
+            prod_original.stock += nuevo_stock
+
+            prod_original.save()
+
             form.save()
-            return redirect('index')  # Redirige a la vista que prefieras después de guardar
+            return redirect('index')
     else:
-        form = ModeloForm(instance=prod_select)
+        form = EditModeloForm(instance=prod_select)
 
     context.update({
         "modelo": prod_select,
         "form": form
     })
 
-    return render(request, 'edit_prod.html', context)
+    return render(request, 'edit_var.html', context)
+
+def crear_variante(request, id_modelo):
+    context = get_global_data()
+    
+    producto = get_object_or_404(Producto, id=id_modelo)
+    
+    if request.method == 'POST':
+        form = CreateModeloForm(request.POST, request.FILES)
+        if form.is_valid():
+            stock = request.POST.get('stock')
+            producto.stock += stock
+            producto.save()
+            form.save()
+            return redirect('index')
+    else:
+        form = CreateModeloForm(initial={'producto': producto})
+    
+    context.update({
+        "form": form
+    })
+
+    return render(request, 'crear_mod.html', context)
+
+def editar_producto(request, id_prod):
+    context = get_global_data()
+    producto_editar = get_object_or_404(Producto, id=id_prod)
+    if request.method == 'POST':
+        form = EditarProductoForm(request.POST, request.FILES, instance=producto_editar)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = EditarProductoForm(instance=producto_editar)
+    context.update({
+        "form": form
+    })
+    return render(request, 'editar_prod.html', context)
+
+def crear_producto(request, id_tema):
+    context = get_global_data()
+    tema = get_object_or_404(Categorias, id=id_tema)
+    if request.method == 'POST':
+        form = EditarProductoForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = EditarProductoForm(initial={'categoria': tema})
+    context.update({
+        "form": form
+    })
+    return render(request, 'crear_producto.html', context)
+
+def eliminar_producto(request, id_prod):
+    producto_eliminar = get_object_or_404(Producto, id=id_prod)
+    producto_eliminar.delete()
+    return redirect('index')
+
+def eliminar_variante(request, id_variante):
+    subproducto_eliminar = get_object_or_404(Producto_modelo, id=id_variante)
+    subproducto_eliminar.producto.stock -= subproducto_eliminar.stock
+    subproducto_eliminar.delete()
+    return redirect('index')

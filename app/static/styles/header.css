@@ -103,6 +103,11 @@ footer {
     margin-top: auto;
 }
 
+input[type="file"] {
+    border: 0px solid transparent !important;
+}
+
+
 footer p {
     margin-bottom: 20px;
 }
