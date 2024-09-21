@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    {% include 'layouts/head_atts.html' %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/no-auth.css' %}">
+    <title>No estas autorizado</title>
+</head>
+<body>
+    {% include 'layouts/header.html' %}
+    <main>
+        {% if user.is_authenticated %}
+        <h1>Ya se creo tu usuario, espera a que te den permisos</h1>
+        <a href="{% url 'logout' %}">Cerrar sesion</a>
+        {% else %}
+        <h1>No tenes autorizado ingresar sin ser staff</h1>
+        <a href="{% url 'login' %}">Ya soy empleado</a>
+        <a href="{% url 'register' %}">Soy nuevo empleado</a>
+        {% endif %}
+    </main>
+    {% include 'layouts/footer.html' %}
+</body>
+</html>

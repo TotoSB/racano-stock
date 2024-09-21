@@ -6,6 +6,10 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('no-autorizado/', views.noaut, name='no_autorizado'),
+    path('login/', views.entrar, name='login'),
+    path('register/', views.register, name='register'),
+    path('logout/', views.unlogin, name='logout'),
     path('crear_modelo/<int:id_modelo>/', views.crear_variante, name="crear_mod"),
     path('crear_producto/<int:id_tema>/', views.crear_producto, name="crear_prod"),
     path('editar_modelo/<int:id_modelo>/', views.editar_producto_variante, name='editar_var'),
@@ -15,5 +19,7 @@ urlpatterns = [
     path('categoria/<str:tema>/', views.temas, name='temas'),
     path('eliminar_producto/<int:id_prod>/', views.eliminar_producto, name='eliminar_producto'),
     path('eliminar_variante/<int:id_variante>/', views.eliminar_variante, name='eliminar_variante'),
+    path('search/', views.search, name='search'),
+    path('search_parameter/', views.search_parameter, name='search_parameter'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

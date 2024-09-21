@@ -111,7 +111,7 @@ h1 {
     main article {
         flex-direction: column;
         align-items: center;
-        width: 60%;
+        width: 90%;
     }
 
     .image {
@@ -127,4 +127,16 @@ h1 {
     main article { 
         width: 90%;
     }
+
+    .cont-btns {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .btn-edit {
+        width: auto;
+        margin-bottom: 5px;
+    }
+
 }

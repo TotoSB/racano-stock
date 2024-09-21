@@ -13,7 +13,7 @@
     <main>
         <section>
             <h1>{{categoria.nombre}}</h1>
-            <a href="{% url 'crear_prod' categoria.id %}">Crear</a>
+            <a href="{% url 'crear_prod' categoria.id %}" class="crear-link">Crear</a>
             <div class="cont-items">
                 {% for inf in infom %}
                     <article class="item">

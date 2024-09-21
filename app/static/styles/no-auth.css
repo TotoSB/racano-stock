@@ -1,0 +1,12 @@
+main {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    height: calc(100vh - 50px - 232px);
+    justify-content: center;
+    align-items: center;
+}
+
+main a {
+    color: var(--blue-default);
+}

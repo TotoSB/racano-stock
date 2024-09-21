@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    {% include 'layouts/head_atts.html' %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/search.css' %}">
+    <title>Buscar</title>
+</head>
+<body>
+    {% include 'layouts/header.html' %}
+    <main>
+        <h1>Buscar:</h1>
+        <form method="post" action="{% url 'search_parameter' %}">
+            {% csrf_token %}
+            {% if palabra %}
+            <input type="text" name="valor" value="{{palabra}}" id="valor">
+            {% else %}
+            <input type="text" name="valor" placeholder="iPhone 12" id="valor">
+            {% endif %}
+            <button type="submit">Buscar</button>
+        </form>
+        <section>
+            {% for producto in productos %}
+                <a href="{% url 'producto' producto.categoria.nombre producto.id %}" class="cont-prod">
+                    <img src="/media/{{producto.foto}}" alt="" srcset="">
+                    <h4>{{producto.nombre}}</h4>
+                </a>
+            {% empty %}
+                <h3>No hay resultados para tu busqueda</h3>
+            {% endfor %}
+        </section>
+    </main>
+    {% include 'layouts/footer.html' %}
+</body>
+</html>

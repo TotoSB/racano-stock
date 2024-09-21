@@ -24,3 +24,12 @@ class EditarProductoForm(forms.ModelForm):
         widgets = {
             'descripcion': forms.Textarea(attrs={'rows': 4, 'cols': 40}),
         }
+
+class LoginForm(forms.Form):
+    user_name = forms.CharField(max_length=150, label="Nombre y apellido:")
+    password = forms.CharField(widget=forms.PasswordInput, label="Contraseña:")
+
+class RegisterForm(forms.Form):
+    user_name = forms.CharField(max_length=150, label="Nombre y apellido:")
+    password1 = forms.CharField(widget=forms.PasswordInput, label="Contraseña:")
+    password2 = forms.CharField(widget=forms.PasswordInput, label="Repita su contraseña:")

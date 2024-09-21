@@ -1,0 +1,40 @@
+main {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    align-items: center;
+}
+
+form input {
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+button {
+    padding: 3px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+main section {
+    display: grid;
+   justify-content: center;
+    gap: 10px;
+    width: 90%;
+    grid-template-columns: repeat(auto-fill, 356px);
+}
+
+main section a {
+    color: #000;
+    text-decoration: none;
+    padding: 10px;
+    text-align: center;
+}
+
+a img {
+    width: 320px;
+    height: 220px;
+    object-fit:contain;
+}

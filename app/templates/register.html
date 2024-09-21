@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    {% include 'layouts/head_atts.html' %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/auth.css' %}">
+    <title>Nuevo empleado</title>
+</head>
+<body>
+    {% include 'layouts/header.html' %}
+    <main>
+        <h1>Solicitar acceso</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{form}}
+            <button type="submit">Enviar</button>
+        </form>
+    </main>
+    {% include 'layouts/footer.html' %}
+</body>
+</html>

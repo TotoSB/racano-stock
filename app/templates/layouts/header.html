@@ -1,5 +1,6 @@
 {% load static %}
 <header>
+    <a class="search-mobile" href="{% url 'search' %}"><i class="fa-solid fa-magnifying-glass"></i></a>
     <a href="{% url 'index' %}"><img id="logo-header" src="{% static 'imgs/logo.png' %}" alt=""></a>
     <nav class="pc-nav">
         {% for categoria in categorias %}
@@ -7,7 +8,7 @@
         {% endfor %}
         <a href="">Soporte</a>
         <a href="">Dónde comprar</a>
-        <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
+        <a href="{% url 'search' %}"><i class="fa-solid fa-magnifying-glass"></i></a>
     </nav>
     <nav class="phone-nav">
         <button onclick="showMenu()">
@@ -21,5 +22,7 @@
         {% for categoria in categorias %}
             <a href="{% url 'temas' categoria.nombre %}">{{categoria.nombre}}</a>
         {% endfor %}
+        <a href="">Soporte</a>
+        <a href="">Dónde comprar</a>
     </div>
 </div>

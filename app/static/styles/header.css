@@ -10,6 +10,10 @@ body {
     overflow-x: hidden;
 }
 
+a {
+    text-decoration: none;
+}
+
 * {
     font-family: "Montserrat", sans-serif;
 }
@@ -19,6 +23,10 @@ body {
 }
 
 .phone-nav {
+    display: none;
+}
+
+.search-mobile {
     display: none;
 }
 
@@ -114,10 +122,6 @@ footer p {
 
 @media(max-width:650px) {
 
-    #hide-menu {
-        display: flex;
-    }
-
     header {
         justify-content: space-between;
         padding: 10px;
@@ -125,6 +129,14 @@ footer p {
 
     header a {
         margin: 0px;
+    }
+
+    .search-mobile {
+        display: block;
+    }
+
+    .search-mobile i {
+        font-size: 18px;
     }
 
     .pc-nav {

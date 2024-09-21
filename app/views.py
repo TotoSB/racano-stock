@@ -1,13 +1,76 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Categorias, Producto, Producto_modelo
-from .forms import EditModeloForm, CreateModeloForm, EditarProductoForm
+from django.contrib.auth import authenticate, login as auth_login, logout
+from .forms import EditModeloForm, CreateModeloForm, EditarProductoForm, LoginForm, RegisterForm
+from django.contrib.auth.decorators import user_passes_test
+from django.contrib import messages
+from django.contrib.auth.models import User
+
+# Verifica si el usuario es staff
+def es_staff(user):
+    return user.is_staff
 
 def get_global_data():
     categorias = Categorias.objects.all()
     return {
         "categorias": categorias
     }
-# Create your views here.
+
+def noaut(request):
+    context = get_global_data()
+    return render(request, 'no-autorizado.html', context)
+
+def entrar(request):
+    context = get_global_data()
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            user_name = form.cleaned_data['user_name']
+            password = form.cleaned_data['password']
+            user = authenticate(username=user_name, password=password)
+            if user is not None:
+                auth_login(request, user)
+                return redirect('index')
+            else:
+                messages.error(request, 'Datos incorrecto.')
+    else:
+        form = LoginForm()
+    context.update({
+        "form": LoginForm
+    })
+    return render(request, 'login.html', context)
+
+def register(request):
+    context = get_global_data()
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user_name = form.cleaned_data['user_name']
+            password1 = form.cleaned_data['password1']
+            password2 = form.cleaned_data['password2']
+            
+            if password1 != password2:
+                form.add_error('password2', 'Las contraseñas no coinciden.')
+            else:
+                if User.objects.filter(username=user_name).exists():
+                    form.add_error('user_name', 'El nombre de usuario ya está en uso.')
+                else:
+                    user = User.objects.create_user(username=user_name, password=password1)
+                    auth_login(request, user)
+                    return redirect('index')
+    else:
+        form = RegisterForm()
+
+    context.update({
+        "form": form
+    })
+    return render(request, 'register.html', context)
+
+def unlogin(request):
+    logout(request)
+    return redirect('index')
+
+@user_passes_test(es_staff, login_url='no_autorizado')
 def index(request):
     context = get_global_data()
     cat_iphone = Categorias.objects.get(nombre="iPhone")
@@ -32,6 +95,7 @@ def index(request):
     })
     return render(request, 'index.html', context)
 
+@user_passes_test(es_staff, login_url='no_autorizado')
 def temas(request, tema):
     context = get_global_data()
     categoria = Categorias.objects.get(nombre=tema)
@@ -42,6 +106,7 @@ def temas(request, tema):
     })
     return render(request, 'tema.html', context)
 
+@user_passes_test(es_staff, login_url='no_autorizado')
 def producto(request, tema, id_prod):
     context = get_global_data()
     prod = Producto.objects.get(id=id_prod)
@@ -52,6 +117,7 @@ def producto(request, tema, id_prod):
     })
     return render(request, 'producto.html', context)
 
+@user_passes_test(es_staff, login_url='no_autorizado')
 def variante(request, tema, id_prod, id_variante):
     context = get_global_data()
     prod_select = Producto_modelo.objects.get(id=id_variante)
@@ -64,6 +130,7 @@ def variante(request, tema, id_prod, id_variante):
     })
     return render(request, 'subproducto.html', context)
 
+@user_passes_test(es_staff, login_url='no_autorizado')
 def editar_producto_variante(request, id_modelo):
     context = get_global_data()
     prod_select = Producto_modelo.objects.get(id=id_modelo)
@@ -93,6 +160,7 @@ def editar_producto_variante(request, id_modelo):
 
     return render(request, 'edit_var.html', context)
 
+@user_passes_test(es_staff, login_url='no_autorizado')
 def crear_variante(request, id_modelo):
     context = get_global_data()
     
@@ -115,6 +183,7 @@ def crear_variante(request, id_modelo):
 
     return render(request, 'crear_mod.html', context)
 
+@user_passes_test(es_staff, login_url='no_autorizado')
 def editar_producto(request, id_prod):
     context = get_global_data()
     producto_editar = get_object_or_404(Producto, id=id_prod)
@@ -130,6 +199,7 @@ def editar_producto(request, id_prod):
     })
     return render(request, 'editar_prod.html', context)
 
+@user_passes_test(es_staff, login_url='no_autorizado')
 def crear_producto(request, id_tema):
     context = get_global_data()
     tema = get_object_or_404(Categorias, id=id_tema)
@@ -145,13 +215,37 @@ def crear_producto(request, id_tema):
     })
     return render(request, 'crear_producto.html', context)
 
+@user_passes_test(es_staff, login_url='no_autorizado')
 def eliminar_producto(request, id_prod):
     producto_eliminar = get_object_or_404(Producto, id=id_prod)
     producto_eliminar.delete()
     return redirect('index')
 
+@user_passes_test(es_staff, login_url='no_autorizado')
 def eliminar_variante(request, id_variante):
     subproducto_eliminar = get_object_or_404(Producto_modelo, id=id_variante)
     subproducto_eliminar.producto.stock -= subproducto_eliminar.stock
     subproducto_eliminar.delete()
     return redirect('index')
+
+@user_passes_test(es_staff, login_url='no_autorizado')
+def search(request):
+    context = get_global_data()
+    context.update({
+        "productos" : Producto.objects.all()
+    })
+    return render(request, "search.html", context)
+
+@user_passes_test(es_staff, login_url='no_autorizado')
+def search_parameter(request):
+    context = get_global_data()
+    busqueda = request.POST.get('valor')
+    try:
+        search_results = Producto.objects.filter(nombre__icontains=busqueda)
+    except Producto.DoesNotExist:
+        search_results = "sin resultados"
+    context.update({
+        "productos": search_results,
+        "palabra": busqueda
+    })
+    return render(request, "search.html", context)
